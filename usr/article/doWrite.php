@@ -1,9 +1,8 @@
 <?php
-$dbConn = mysqli_connect("127.0.0.1", "sbsst", "sbs123414", "php_blog_2021") or die("DBCONNECTN ERROR");
+require_once $_SERVER['DOCUMENT_ROOT'] . '/webInit.php';
 
 $title = getStrValueOr($_GET['title'], "");
 $body = getStrValueOr($_GET['body'], "");
-
 
 if ( !$title ) {
   jsHistoryBackExit("제목을 입력해주세요.");
@@ -20,9 +19,6 @@ updateDate = NOW(),
 title = '${title}',
 `body` = '${body}'
 ";
-mysqli_query($dbConn, $sql);
-
-$id = mysqli_insert_id($dbConn);
-
+$id = DB__insert($sql);
 
 jsLocationReplaceExit("detail.php?id=${id}", "${id}번 게시물이 생성되었습니다."); 
