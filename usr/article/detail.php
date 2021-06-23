@@ -12,9 +12,7 @@ FROM article AS A
 WHERE A.id = '${id}'
 ";
 
-$sql = "
-update article set hit=hit+1 where id='${id}'
-";
+
 $article = DB__getRow($sql);
 
 if ( $article == null ) {
