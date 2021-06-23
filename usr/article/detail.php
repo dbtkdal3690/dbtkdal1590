@@ -1,5 +1,6 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'] . '/webInit.php';
+
 if ( isset($_GET['id']) == false ) {
   echo "id를 입력해주세요.";
   exit;
@@ -9,6 +10,10 @@ $sql = "
 SELECT *
 FROM article AS A
 WHERE A.id = '${id}'
+";
+
+$sql = "
+update article set hit=hit+1 where id='${id}'
 ";
 $article = DB__getRow($sql);
 
@@ -29,10 +34,10 @@ $pageTitle = "게시물 상세내용, ${id}번 게시물";
   <a onclick="if ( confirm('정말 삭제 하시겠습니까?') == false ) return false;" href="doDelete.php?id=<?=$article['id']?>">삭제</a>
 </div>
 <hr>
-
   <div>번호 : <?=$article['id']?></div>
   <div>작성날짜 : <?=$article['regDate']?></div>
   <div>수정날짜 : <?=$article['updateDate']?></div>
+  <div>조회수 : <?=$article['hit']?></div>
   <div>제목 : <?=$article['title']?></div>
   <div>내용 : <?=$article['body']?></div>
 </body>
