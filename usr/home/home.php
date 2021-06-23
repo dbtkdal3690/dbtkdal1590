@@ -25,6 +25,7 @@ $pageTitle = "게시물 리스트";
 <a href="write.php">글 작성하기</a>
 <a href="../member/login.php">로그인하기</a>
 <a href="../member/join.php">회원가입</a>
+<a href="/">#</a>
 <hr>
 
 </div>
@@ -36,7 +37,6 @@ $pageTitle = "게시물 리스트";
   <a href="<?=$detailUri?>">번호 : <?=$article['id']?></a><br>
   작성날짜 : <?=$article['regDate']?><br>
   수정날짜 : <?=$article['updateDate']?><br>
-  조회수 : <?=$article['hit']?><br>
   <a href="<?=$detailUri?>">제목 : <?=$article['title']?></a><br>
   내용 : <?=$article['body']?><br>
   <hr>
