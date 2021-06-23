@@ -1,18 +1,17 @@
 <?php
-$dbConn = mysqli_connect("127.0.0.1", "sbsst", "sbs123414", "php_blog_2021") or die("DB CONNECTION ERROR");
+$dbConn = mysqli_connect("127.0.0.1", "sbsst", "sbs123414", "php_blog_2021") or die("DBCONNECTN ERROR");
 
-if ( isset($_GET['title']) == false ) {
-  echo "title을 입력해주세요.";
-  exit;
+$title = getStrValueOr($_GET['title'], "");
+$body = getStrValueOr($_GET['body'], "");
+
+
+if ( !$title ) {
+  jsHistoryBackExit("제목을 입력해주세요.");
 }
 
-if ( isset($_GET['body']) == false ) {
-  echo "body를 입력해주세요.";
-  exit;
+if ( !$body ) {
+  jsHistoryBackExit("내용을 입력해주세요.");
 }
-
-$title = $_GET['title'];
-$body = $_GET['body'];
 
 $sql = "
 INSERT INTO article
@@ -25,7 +24,5 @@ mysqli_query($dbConn, $sql);
 
 $id = mysqli_insert_id($dbConn);
 
-?>
-<div><?=$id?>번 게시물이 생성되었습니다.</div>
-<div><a href="detail.php?id=<?=$id?>">생성된 게시물</a></div>
-<div><a href="list.php">리스트</a></div>
+
+jsLocationReplaceExit("detail.php?id=${id}", "${id}번 게시물이 생성되었습니다."); 

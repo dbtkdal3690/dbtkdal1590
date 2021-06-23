@@ -16,7 +16,7 @@ while ( $article = mysqli_fetch_assoc($rs) ) {
 }
 ?>
 
-<?php
+<?php 
 $pageTitle = "게시물 리스트";
 ?>
 <?php require_once __DIR__ . "/../head.php"; ?>
@@ -25,7 +25,7 @@ $pageTitle = "게시물 리스트";
 <a href="write.php">글 작성하기</a>
 <a href="../member/login.php">로그인하기</a>
 <a href="../member/join.php">회원가입</a>
-<hr>
+
 </div>
 <div>
 <?php foreach ($articles as $article) { ?>
@@ -40,4 +40,5 @@ $pageTitle = "게시물 리스트";
   <hr>
 <?php } ?>
 </div>
-<?php require_once __DIR__ . "/../foot.php"; ?>
+</body>
+</html>
