@@ -2,30 +2,28 @@
 require_once $_SERVER['DOCUMENT_ROOT'] . '/webInit.php';
 
 
-if ( isset($_GET['id']) == false ) {
-  echo "id를 입력해주세요.";
+if ( isset($_GET['loginId']) == false ) {
+  echo "loginId를 입력해주세요.";
   exit;
 }
-$id = intval($_GET['id']);
+$loginId = intval($_GET['loginId']);
 $sql = "
 SELECT *
-FROM article AS A
-WHERE A.id = '${id}'
+FROM member AS M
+WHERE M.loginId = '${loginId}'
 ";
-$article = DB__getRow($sql);
+$member = DB__getRow($sql);
 
-if ( $article == null ) {
-  echo "${id}번 게시물은 존재하지 않습니다.";
+if ( $member == null ) {
+  echo "${loginId}번 회원은 존재하지 않습니다.";
   exit;
 }
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>회원정보 수정하기</title>
+<?php
+$pageTitle = "회원 수정";
+?>
+<?php require_once __DIR__ . "/../head.php"; ?>
+<div>
 </head>
 <body>
   <form action="doModify.php">
