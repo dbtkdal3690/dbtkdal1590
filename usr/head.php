@@ -14,7 +14,7 @@
   <div class="site-wrap">
   <header class="top-bar bg-black text-white h-10">
       <div class="container mx-auto h-full flex">
-        <a href="/usr/home/home.php" class="top-bar__logo px-5 flex items-center">
+        <a href="/" class="top-bar__logo px-5 flex items-center">
           <span><i class="fas fa-lemon"></i></span>
           <span class="ml-2 font-bold">블로그 </span>
         </a>
@@ -30,9 +30,15 @@
               </a>
             </li>
             <li class="hover:bg-white hover:text-black">
+              <a href="/usr/home/home.php" class="h-full flex items-center px-5">
+                <span><i class="far fa-id-card"></i></span>
+                <span class="ml-2 font-bold">나의 페이지</span>
+              </a>
+            </li>
+            <li class="hover:bg-white hover:text-black">
               <a href="/usr/member/login.php" class="h-full flex items-center px-5">
                 <span><i class="fas fa-sign-in-alt"></i></span>
-                <span class="ml-2 font-bold">LOGIN</span>
+                <span class="ml-2 font-bold">로그인</span>
               </a>
             </li>
           </ul>

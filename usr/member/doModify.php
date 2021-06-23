@@ -3,7 +3,7 @@ $dbConn = mysqli_connect("127.0.0.1", "sbsst", "sbs123414", "php_blog_2021") or 
 
 
 if ( isset($_GET['loginId']) == false ) {
-  echo "id를 입력해주세요.";
+  echo "loginId를 입력해주세요.";
   exit;
 }
 

@@ -1,24 +1,22 @@
 <?php
-$dbConn = mysqli_connect("127.0.0.1", "sbsst", "sbs123414", "php_blog_2021") or die("DBCONNECTN ERROR");
+require_once $_SERVER['DOCUMENT_ROOT'] . '/webInit.php';
 
 
-$loginId = getIntValueOr($_GET['loginId'], 0);
-
-if ( $loginId == 0 ) {
-  jsHistoryBackExit("번호를 입력해주세요.");
+if ( isset($_GET['id']) == false ) {
+  echo "id를 입력해주세요.";
+  exit;
 }
-
-
+$id = intval($_GET['id']);
 $sql = "
 SELECT *
-FROM `member` AS M 
-WHERE M.loginId = '${loginId}'
+FROM article AS A
+WHERE A.id = '${id}'
 ";
-$rs = mysqli_query($dbConn, $sql);
-$member = mysqli_fetch_assoc($rs);
+$article = DB__getRow($sql);
 
-if ( $member == null ) {
-  echo "회원이 존재하지 않습니다.";
+if ( $article == null ) {
+  echo "${id}번 게시물은 존재하지 않습니다.";
+  exit;
 }
 ?>
 <!DOCTYPE html>
@@ -30,7 +28,7 @@ if ( $member == null ) {
   <title>회원정보 수정하기</title>
 </head>
 <body>
-  <form action="doModify.php".php">
+  <form action="doModify.php">
   <div>
   <span>아이디</span>
   <input type="text" name="" id="">
